@@ -35,6 +35,6 @@ export class OrderPage {
     }
 
     async getOrderTitle() {
-        return (await this.divTitle.textContent()).trim();
+        return (await this.divTitle.textContent())?.trim();
     }
 }

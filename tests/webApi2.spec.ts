@@ -55,7 +55,7 @@ test('@Api Client App Login', async () => {
 
     await page.waitForLoadState('domcontentloaded');
     const orderId = await page.locator('table label').last().textContent();
-    const trimmedOrderId = orderId.replaceAll('|', '').trim();
+    const trimmedOrderId = orderId?.replaceAll('|', '').trim();
     console.log(trimmedOrderId);
     await page.locator('table label').first().click();
     await page.waitForLoadState('domcontentloaded');
@@ -67,7 +67,7 @@ test('@Api Client App Login', async () => {
 
     await page.locator('table td button.btn-primary').nth(rowId).click();
     await page.waitForLoadState('domcontentloaded');
-    expect((await page.locator('div.title').textContent()).trim()).toEqual(productName);
+    expect((await page.locator('div.title').textContent())?.trim()).toEqual(productName);
 });
 
 test('@Api Print Items', async () => {

@@ -5,12 +5,12 @@ export class LoginPage {
 
     private readonly emailFld: Locator;
     private readonly loginBtn: Locator;
-    private readonly password: Locator;
+    private readonly passwordFld: Locator;
     private readonly _topBar: TopBar;
 
     constructor(private readonly page: Page) {
         this.emailFld = page.locator('#userEmail');
-        this.password = page.locator('#userPassword');
+        this.passwordFld = page.locator('#userPassword');
         this.loginBtn = page.locator('#login');
         this._topBar = new TopBar(page);
     }
@@ -25,7 +25,7 @@ export class LoginPage {
 
     async login(email: string, password: string) {
         await this.emailFld.type(email);
-        await this.password.type(password);
+        await this.passwordFld.type(password);
         await Promise.all([
             this.loginBtn.click(),
             this.page.waitForLoadState('networkidle'),
