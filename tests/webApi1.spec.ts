@@ -45,5 +45,5 @@ test('@Api Create Order', async ({page}) => {
 
     await page.locator('table td button.btn-primary').nth(rowId).click();
     await page.waitForLoadState('domcontentloaded');
-    expect((await page.locator('div.title').textContent()).trim()).toEqual(productName);
+    expect((await page.locator('div.title').textContent())?.trim()).toEqual(productName);
 });

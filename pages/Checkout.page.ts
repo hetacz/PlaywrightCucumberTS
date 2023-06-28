@@ -81,9 +81,9 @@ export class CheckoutPage {
 
     async getOrderId() {
         const orderId = await (this.finishedOrderTable.last()).textContent();
-        const trimmedOrderId = orderId.replaceAll('|', '').trim();
+        const trimmedOrderId = orderId?.replaceAll('|', '').trim();
         console.log(trimmedOrderId);
-        return trimmedOrderId;
+        return trimmedOrderId ?? '';
     }
 
     async clickCurrentOrderLink() {

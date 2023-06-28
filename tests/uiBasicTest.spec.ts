@@ -117,8 +117,8 @@ test('Handling child windows', async ({browser}) => {
     ]);
     const text = await newPage.locator('.red').textContent();
     await expect(text === null).toBeFalsy();
-    const domain = text.split('@')[1].split(' ')[0];
+    const domain = text?.split('@')[1].split(' ')[0];
     console.log(domain);
-    await userName.type(domain);
+    await userName.type(domain ?? '');
     console.log(await userName.textContent());
 });
