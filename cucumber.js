@@ -2,7 +2,8 @@ let common = [
     'features/**/*.feature',
     '--require-module ts-node/register',
     '--require steps/**/*.ts',
-    '--format progress-bar',
+    '--format progress',
+    //'--format-options \'{ "snippetInterface" : "async-await" }\'',
     '--publish-quiet'
 ].join(' ');
 

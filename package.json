@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js -p default",
+    "test": "cucumber-js -p default --exit",
     "test:debug": "npx playwright test --debug",
     "test:headed": "npx playwright test --headed"
   },
