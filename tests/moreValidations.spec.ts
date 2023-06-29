@@ -33,7 +33,7 @@ test('Screenshot and visual comparison', async ({page}) => {
     const element = page.locator('#displayed-text');
     await page.goto('https://rahulshettyacademy.com/AutomationPractice/');
     await expect(element).toBeVisible();
-    await page.screenshot({path: 'partialScreenshot.png'});
+    await element.screenshot({path: 'partialScreenshot.png'});
     await page.locator('#hide-textbox').click();
     await page.screenshot({path: 'screenshot.png'});
     await expect(element).toBeHidden();
