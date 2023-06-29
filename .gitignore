@@ -3,3 +3,5 @@ node_modules/
 /playwright-report/
 package-lock.json
 .idea
+.vscode
+.iml
