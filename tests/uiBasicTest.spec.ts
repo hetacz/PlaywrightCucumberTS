@@ -89,8 +89,6 @@ test('Locator locator', async ({page}) => {
 test('UI Controls', async ({page}) => {
 
     await page.goto('http://rahulshettyacademy.com/loginpagePractise/');
-    const userName = page.locator('#username');
-    const signIn = page.locator('#signInBtn');
     const documentLink = page.locator('[href*="documents-request"]');
     const dropdown = page.locator('select.form-control');
     await dropdown.selectOption('consult');
@@ -117,8 +115,8 @@ test('Handling child windows', async ({browser}) => {
     ]);
     const text = await newPage.locator('.red').textContent();
     await expect(text === null).toBeFalsy();
-    const domain = text.split('@')[1].split(' ')[0];
+    const domain = text?.split('@')[1]?.split(' ')[0];
     console.log(domain);
-    await userName.type(domain);
+    await userName.type(domain ?? '');
     console.log(await userName.textContent());
 });
