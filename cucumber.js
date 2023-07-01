@@ -1,10 +1,12 @@
-let common = [
-    'features/**/*.feature',
+const common = [
+    './features/**/*.feature',
+    '--require "./features/hooks/**/*.ts"',
+    '--require "./features/step_definitions/**/*.ts"',
     '--require-module ts-node/register',
-    '--require steps/**/*.ts',
     '--format progress',
-    //'--format-options \'{ "snippetInterface" : "async-await" }\'',
-    '--publish-quiet'
+    '--format-options \'{ "snippetInterface" : "async-await" }\'',
+    '--publish-quiet',
+    // '--world-parameters \'{"foo":"bar"}\'',
 ].join(' ');
 
 module.exports = {
@@ -31,7 +33,7 @@ module.exports = {
 // let common = [
 //     './apps/risksuite-playwright/src/features/*.feature',
 //     '--require "./apps/risksuite-playwright/src/support/hooks.js"',
-//     '--require "./apps/risksuite-playwright/src/step_definitions/*.steps.ts"',
+//     '--require "./apps/risksuite-playwright/src/step_definitions/*.ecommerce1.ts"',
 //     '--format json:apps/risksuite-playwright/src/reports/temp/report.json',
 //     '--format message:apps/risksuite-playwright/src/reports/temp/report.ndjson',
 //     '--format html:apps/risksuite-playwright/src/reports/temp/report.html',
