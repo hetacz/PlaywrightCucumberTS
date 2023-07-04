@@ -6,8 +6,9 @@ Given(
     async function (username: string, password: string) {
         await this.poManager.loginPage.load();
         await this.poManager.loginPage.login(username, password);
+
         this.email = username;
-    }
+    },
 );
 When(/^I add "([^"]*)" to the cart$/, async function (productName: string) {
     await this.poManager.dashboardPage.addProductToCart(productName);
