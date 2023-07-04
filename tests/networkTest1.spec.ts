@@ -1,5 +1,5 @@
-import { expect, request, test } from '@playwright/test';
-import { ApiUtils } from '../utils/apiUtils';
+import {expect, request, test} from '@playwright/test';
+import {ApiUtils} from '../utils/apiUtils';
 
 let token: string;
 let orderResponseId: string;
@@ -8,7 +8,7 @@ const productId = '6262e95ae26b7e1a10e89bf0';
 
 const loginPayload = {
     userEmail: 'qwe123@pl.pl',
-    userPassword: 'Qqq111!!!'
+    userPassword: ''
 };
 
 const orderPayload = {

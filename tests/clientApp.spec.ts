@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import {expect, test} from '@playwright/test';
 
 test('Client App Login', async ({page}) => {
 
@@ -7,7 +7,7 @@ test('Client App Login', async ({page}) => {
 
     await page.goto('https://rahulshettyacademy.com/client');
     await page.locator('#userEmail').fill('qwe123@pl.pl');
-    await page.locator('#userPassword').fill('Qqq111!!!');
+    await page.locator('#userPassword').fill('');
     await page.locator('[value="Login"]').click();
     await page.waitForLoadState('networkidle');
     const title = await page.locator('.card-body b').allTextContents();

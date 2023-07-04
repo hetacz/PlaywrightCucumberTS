@@ -1,4 +1,4 @@
-import { BrowserContext, expect, test } from '@playwright/test';
+import {BrowserContext, expect, test} from '@playwright/test';
 
 let ctx: BrowserContext;
 
@@ -8,7 +8,7 @@ test.beforeAll(async ({browser}) => { // must be on context level
     const page = await context.newPage();
     await page.goto('https://rahulshettyacademy.com/client');
     await page.locator('#userEmail').fill('qwe123@pl.pl');
-    await page.locator('#userPassword').fill('Qqq111!!!');
+    await page.locator('#userPassword').fill('');
     await page.locator('[value="Login"]').click();
     await page.waitForLoadState('networkidle');
     await context.storageState({path: 'state.json'});
