@@ -1,4 +1,4 @@
-import { test as base } from '@playwright/test';
+import {test as base} from '@playwright/test';
 
 type MyFixtures = {
     fixture1: TestData;
@@ -15,7 +15,7 @@ export const test = base.extend<MyFixtures>({
     fixture1: async ({page}, use) => {
         const fixture: TestData = {
             username: 'qwe123@pl.pl',
-            password: 'Qqq111!!!',
+            password: '',
             productName: 'zara coat 3'
         };
         await use(fixture);
@@ -23,11 +23,11 @@ export const test = base.extend<MyFixtures>({
     fixture2: async ({page}, use) => {
         const fixture: TestData = {
             username: 'qqq@www.eee',
-            password: 'Qqq111!!!',
+            password: '',
             productName: 'adidas original'
         };
         await use(fixture);
     }
 });
 
-export { expect } from '@playwright/test';
+export {expect} from '@playwright/test';

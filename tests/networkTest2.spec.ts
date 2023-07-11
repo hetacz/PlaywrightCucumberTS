@@ -1,5 +1,5 @@
-import { request, test } from '@playwright/test';
-import { ApiUtils } from '../utils/apiUtils';
+import {request, test} from '@playwright/test';
+import {ApiUtils} from '../utils/apiUtils';
 
 let token: string;
 let orderResponseId: string;
@@ -8,7 +8,7 @@ const productId = '6262e9d9e26b7e1a10e89c04';
 
 const loginPayload = { // this account has one order
     userEmail: 'qwe123@ok.ok', // ok not pl as usual
-    userPassword: 'Qqq111!!!'
+    userPassword: ''
 };
 
 const orderPayload = {

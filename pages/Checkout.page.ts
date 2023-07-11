@@ -3,16 +3,14 @@ import { TopBar } from './TopBar.page';
 
 export class CheckoutPage {
 
-    private readonly placeOrderBtn: Locator;
-    private readonly dropdown: Locator;
-    private readonly inputFLd: Locator;
+    private readonly _topBar: TopBar;
+    private readonly countryDrop: Locator;
     private readonly couponBtn: Locator;
     private readonly couponP: Locator;
-    private readonly countryDrop: Locator;
-
+    private readonly dropdown: Locator;
     private readonly finishedOrderTable: Locator;
-
-    private readonly _topBar: TopBar;
+    private readonly inputFLd: Locator;
+    private readonly placeOrderBtn: Locator;
 
     constructor(private readonly page: Page) {
         this.placeOrderBtn = this.page.locator('text="Place Order"');
@@ -29,20 +27,20 @@ export class CheckoutPage {
         return this._topBar;
     }
 
-    async waitForPlaceOrderBtn() {
-        await this.placeOrderBtn.waitFor();
+    async applyCoupon(coupon: string) {
+        await this.inputFLd.nth(3).fill(coupon);
+        await this.couponBtn.click();
+        await this.couponP.waitFor();
     }
 
-    async selectMonth(month: number) {
-        await this.dropdown.first().selectOption({index: month});
+    async clickCurrentOrderLink() {
+        await (this.finishedOrderTable.first()).click();
+        await this.page.waitForLoadState('domcontentloaded');
     }
 
-    async selectYear(year: number) {
-        await this.dropdown.last().selectOption({index: year});
-    }
-
-    async isCCFilled() {
-        return await this.inputFLd.nth(0).inputValue() !== '';
+    async clickPlaceOrderBtn() {
+        await this.placeOrderBtn.click();
+        await this.page.waitForLoadState('domcontentloaded');
     }
 
     async fillCC(cc: number) {
@@ -58,25 +56,8 @@ export class CheckoutPage {
         await this.inputFLd.nth(2).fill(name);
     }
 
-    async applyCoupon(coupon: string) {
-        await this.inputFLd.nth(3).fill(coupon);
-        await this.couponBtn.click();
-        await this.couponP.waitFor();
-    }
-
-    async selectCountry(country: string) {
-        await this.inputFLd.last().type(country, {delay: 100});
-        await this.countryDrop.waitFor();
-        await this.page.locator(`button.ta-item > span:text-is(" ${country}")`).click();
-    }
-
     async getEmailFldValue() {
         return await this.inputFLd.nth(4).inputValue();
-    }
-
-    async clickPlaceOrderBtn() {
-        await this.placeOrderBtn.click();
-        await this.page.waitForLoadState('domcontentloaded');
     }
 
     async getOrderId() {
@@ -86,8 +67,25 @@ export class CheckoutPage {
         return trimmedOrderId ?? '';
     }
 
-    async clickCurrentOrderLink() {
-        await (this.finishedOrderTable.first()).click();
-        await this.page.waitForLoadState('domcontentloaded');
+    async isCCFilled() {
+        return await this.inputFLd.nth(0).inputValue() !== '';
+    }
+
+    async selectCountry(country: string) {
+        await this.inputFLd.last().type(country, {delay: 100});
+        await this.countryDrop.waitFor();
+        await this.page.locator(`button.ta-item > span:text-is(" ${country}")`).click();
+    }
+
+    async selectMonth(month: number) {
+        await this.dropdown.first().selectOption({index: month});
+    }
+
+    async selectYear(year: number) {
+        await this.dropdown.last().selectOption({index: year});
+    }
+
+    async waitForPlaceOrderBtn() {
+        await this.placeOrderBtn.waitFor();
     }
 }
